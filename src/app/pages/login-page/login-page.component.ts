@@ -33,9 +33,12 @@ export class LoginPageComponent {
    
    
     this.userService.onLogin(loginData).subscribe((res) => {
+      console.log(res)
       if(res.result) {
  
         localStorage.setItem("angular18TokenData", JSON.stringify(res.data))
+        localStorage.setItem("angular18TokenEmailId", (res.data.emailId))
+        localStorage.setItem("angular18TokenUserId", JSON.stringify(res.data.userId))
         this.router.navigateByUrl("/dashboard")
       } else {
         console.log(res.message)

@@ -14,6 +14,9 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.getUsers()
+    this.userService.$refreshTokenisReceived.subscribe((res: any) => {
+      this.getUsers()
+    })
   }
 
   getUsers() {
